@@ -4,6 +4,7 @@ import { program } from "commander";
 import { listTasks } from "./commands/listTasks.js";
 import { addTasks } from "./commands/addTasks.js";
 import { markDoneTasks } from "./commands/markDoneTasks.js";
+import { deleteTasks } from "./commands/deleteTasks.js";
 
 program.command("list").description("List all Todo Tasks").action(listTasks);
 program
@@ -17,5 +18,10 @@ program
         "The tasks to mark done. If not specified, all the tasks will be mark as done"
     )
     .action(markDoneTasks);
+
+program
+    .command("delete")
+    .option("-t, --tasks <tasks...>", "The tasks to be deleted.")
+    .action(deleteTasks);
 
 program.parse();
